@@ -6,15 +6,15 @@
 //  Copyright (c) 2015年 Juvid's. All rights reserved.
 //
 
-#import "LEBasicModels.h"
+#import "JUBasicModels.h"
 
-@interface LEBasicModels (){
+@interface JUBasicModels (){
     NSArray *sh_ArrProperty;//所以属性
 }
 
 @end
 
-@implementation LEBasicModels
+@implementation JUBasicModels
 +(id)le_InitModel{
     id  baseModel = [[[self class] alloc]init] ;
     return baseModel;
@@ -40,7 +40,7 @@
     return [self setDictionaryForModel:dic withObject:nil] ;
 }
 -(id) setDictionaryForModel :(NSDictionary *) dic{
-    return [LEBasicModels setDictionaryForModel:dic withObject:self];
+    return [JUBasicModels setDictionaryForModel:dic withObject:self];
 }
 //字典转换成对象
 +(id) setDictionaryForModel :(NSDictionary *) dic withObject:(id)baseModel{
@@ -50,11 +50,11 @@
         baseModel = [[[self class] alloc]init] ;
     }
     if (![dic isKindOfClass:[NSDictionary class]]) {
-        if([dic isKindOfClass:[LEBasicModels class]])return dic;
+        if([dic isKindOfClass:[JUBasicModels class]])return dic;
         return baseModel;
     }
     Class class = [baseModel class];
-    while (class!=[LEBasicModels class]) {
+    while (class!=[JUBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)
@@ -94,7 +94,7 @@
             [backArr addObject:baseModel];
         }
 //        修复
-        else if([dic isKindOfClass:[LEBasicModels class]]){
+        else if([dic isKindOfClass:[JUBasicModels class]]){
             [backArr addObject:dic];
         }
     }
@@ -105,12 +105,12 @@
 
 //对象转换成字典
 +(NSMutableDictionary *) setModelForDictionary :(id) baseModel {
-    if (![baseModel isKindOfClass:[LEBasicModels class]]) {
+    if (![baseModel isKindOfClass:[JUBasicModels class]]) {
         return [NSMutableDictionary dictionary];//防止死循环
     }
     NSMutableDictionary *dicModel = [NSMutableDictionary dictionary];
     Class class = [baseModel class];
-    while (class!=[LEBasicModels class]) {
+    while (class!=[JUBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList(class, &outCount);
         for (i = 0; i<outCount; i++)
@@ -149,7 +149,7 @@
 +(NSString *) setModelForString :(id ) baseModel{
     NSMutableString *strModel = [NSMutableString string];
     Class class = [baseModel class];
-    while (class!=[LEBasicModels class]) {
+    while (class!=[JUBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)

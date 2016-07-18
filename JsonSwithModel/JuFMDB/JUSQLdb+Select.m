@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb+Select.h"
+#import "JUSQLdb+Select.h"
 
-@implementation PFBSQLdb (Select)
+@implementation JUSQLdb (Select)
 
 //查询表
 +(NSMutableArray *)shSelectTable:(NSString *)tableName{
@@ -90,7 +90,7 @@
 +(NSMutableArray *)shSelectTable:(NSString *)tableName
                          withSql:(NSString *)strSql
 {
-    FMDatabase *db=[PFBSQLdb CreatDB:tableName];
+    FMDatabase *db=[JUSQLdb CreatDB:tableName];
     NSMutableArray *arrResult=[NSMutableArray array];
     if ([db open]) {
         FMResultSet *rs=[db executeQuery:strSql];

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
-#import "LEBasicModels.h"
-@interface PFBSQLdb : NSObject
+#import "JUBasicModels.h"
+@interface JUSQLdb : NSObject
 +(FMDatabase *)CreatDB;
 +(FMDatabase *)CreatDB:(NSString *)table;
 

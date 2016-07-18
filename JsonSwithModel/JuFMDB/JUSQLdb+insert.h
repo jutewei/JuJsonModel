@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb.h"
+#import "JUSQLdb.h"
 
-@interface PFBSQLdb (insert)
+@interface JUSQLdb (insert)
 //插入表数据
 //+(BOOL)insertTabData:(id)data PrimaryKey:(NSString *)primaryKey;
 

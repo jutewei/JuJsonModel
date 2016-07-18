@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb.h"
+#import "JUSQLdb.h"
 
-@interface PFBSQLdb (Delete)
+@interface JUSQLdb (Delete)
 /**
  *  @author Juvid, 16-07-11 15:07:27
  *

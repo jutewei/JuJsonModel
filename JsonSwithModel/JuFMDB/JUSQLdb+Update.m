@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb+Update.h"
+#import "JUSQLdb+Update.h"
 
-@implementation PFBSQLdb (Update)
+@implementation JUSQLdb (Update)
 +(BOOL)shUpdateTable:(id)object setKeys:(id)setKeys{
     NSString *className=NSStringFromClass([object class]);
 
@@ -92,7 +92,7 @@
 }
 +(BOOL)shUpdateTable:(NSString *)tableName withSql:(NSString *)sqlStr{
     BOOL flag = NO;
-    FMDatabase *db=[PFBSQLdb CreatDB:tableName];
+    FMDatabase *db=[JUSQLdb CreatDB:tableName];
     NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"UPDATE  %@  SET ",tableName]];
     [sql appendString:sqlStr];
     if (![db open]) return NO;

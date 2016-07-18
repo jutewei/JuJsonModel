@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 Juvid's. All rights reserved.
 //
 
-#import "LEBasicEncode.h"
-#import "LEBasicModels.h"
-@implementation LEBasicEncode
+#import "JUBasicEncode.h"
+#import "JUBasicModels.h"
+@implementation JUBasicEncode
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self=[[[self class] alloc]init];
     if (self) {
         Class class = [self class];
-        while (class!=[LEBasicModels class]) {
+        while (class!=[JUBasicModels class]) {
             unsigned int outCount, i;
             objc_property_t *properties =class_copyPropertyList([class class], &outCount);
             for (i = 0; i<outCount; i++)
@@ -35,7 +35,7 @@
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     Class class = [self class];
-    while (class!=[LEBasicModels class]) {
+    while (class!=[JUBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)
@@ -60,7 +60,7 @@
     NSObject *copy = [[[self class] alloc] init];
     if (copy) {
         Class class = [copy class];
-        while (class!=[LEBasicModels class]) {
+        while (class!=[JUBasicModels class]) {
             unsigned int outCount, i;
             objc_property_t *properties =class_copyPropertyList([class class], &outCount);
             for (i = 0; i<outCount; i++)
@@ -82,7 +82,7 @@
 -(void)mutableCopy:(id)baseClass{
     if (baseClass) {
         Class class = [baseClass class];
-        while (class!=[LEBasicModels class]) {
+        while (class!=[JUBasicModels class]) {
             unsigned int outCount, i;
             objc_property_t *properties =class_copyPropertyList([class class], &outCount);
             for (i = 0; i<outCount; i++)
@@ -102,7 +102,7 @@
 }
 -(void)destroyDealloc{
     Class class = [self class];
-    while (class!=[LEBasicModels class]) {
+    while (class!=[JUBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)

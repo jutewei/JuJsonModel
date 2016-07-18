@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 XYGAME. All rights reserved.
 //
 
-#import "PFBSQLdb.h"
+#import "JUSQLdb.h"
 #import <objc/message.h>
 #import <objc/runtime.h>
 //#import "LEFilePath.h"
 //#import "PFBAutoTokenModel.h"
 //#define FriendsList @"Friend_List"
 //#define ChatRecord  @"Chat_Record"
-@implementation PFBSQLdb
+@implementation JUSQLdb
 +(FMDatabase *)CreatDB:(NSString *)table{
      NSString *dbPath;
 //    if ([table isEqualToString:@"SHUserTable"]) {

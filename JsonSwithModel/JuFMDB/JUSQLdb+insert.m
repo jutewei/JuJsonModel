@@ -6,13 +6,13 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb+insert.h"
+#import "JUSQLdb+insert.h"
 
-@implementation PFBSQLdb (insert)
+@implementation JUSQLdb (insert)
 //插入表数据
 /**批量插入数据使用事物*/
 +(BOOL)shInsertMultTable:(id)objects primary:(NSString *)priKey{
-    FMDatabase *db=[PFBSQLdb CreatDB];
+    FMDatabase *db=[JUSQLdb CreatDB];
     [db open];
     BOOL isRollBack = NO;
     [db beginTransaction];
@@ -71,7 +71,7 @@
 }
 +(BOOL)shInsertTable:(NSString *)tableName withSql:(NSString *)sqlStr{
     BOOL flag = NO;
-    FMDatabase *db=[PFBSQLdb CreatDB:tableName];
+    FMDatabase *db=[JUSQLdb CreatDB:tableName];
     NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"INSERT INTO %@",tableName]];
     [sql appendString:sqlStr];
     if (![db open]) return NO;

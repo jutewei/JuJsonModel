@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
-#import "LEBasicEncode.h"
+#import "JUBasicEncode.h"
 #define Pro_Prefix @"sh_"
-@interface LEBasicModels : LEBasicEncode
+@interface JUBasicModels : JUBasicEncode
 /**
  *  @author Juvid, 15-09-11 11:09:42
  *

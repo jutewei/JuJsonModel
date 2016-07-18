@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EBFEB23D1D3C93600033AFDE /* LEBasicEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB23A1D3C93600033AFDE /* LEBasicEncode.m */; };
-		EBFEB23E1D3C93600033AFDE /* LEBasicModels.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB23C1D3C93600033AFDE /* LEBasicModels.m */; };
+		EBFEB23D1D3C93600033AFDE /* JUBasicEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB23A1D3C93600033AFDE /* JUBasicEncode.m */; };
+		EBFEB23E1D3C93600033AFDE /* JUBasicModels.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB23C1D3C93600033AFDE /* JUBasicModels.m */; };
 		EBFEB24F1D3C93970033AFDE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2441D3C93970033AFDE /* FMDatabase.m */; };
 		EBFEB2501D3C93970033AFDE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2461D3C93970033AFDE /* FMDatabaseAdditions.m */; };
 		EBFEB2511D3C93970033AFDE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2481D3C93970033AFDE /* FMDatabasePool.m */; };
 		EBFEB2521D3C93970033AFDE /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB24A1D3C93970033AFDE /* FMDatabaseQueue.m */; };
 		EBFEB2531D3C93970033AFDE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB24D1D3C93970033AFDE /* FMResultSet.m */; };
-		EBFEB25F1D3C93CE0033AFDE /* PFBSQLdb.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2561D3C93CE0033AFDE /* PFBSQLdb.m */; };
-		EBFEB2601D3C93CE0033AFDE /* PFBSQLdb+insert.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2581D3C93CE0033AFDE /* PFBSQLdb+insert.m */; };
-		EBFEB2611D3C93CE0033AFDE /* PFBSQLdb+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25A1D3C93CE0033AFDE /* PFBSQLdb+Delete.m */; };
-		EBFEB2621D3C93CE0033AFDE /* PFBSQLdb+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25C1D3C93CE0033AFDE /* PFBSQLdb+Update.m */; };
-		EBFEB2631D3C93CE0033AFDE /* PFBSQLdb+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25E1D3C93CE0033AFDE /* PFBSQLdb+Select.m */; };
+		EBFEB25F1D3C93CE0033AFDE /* JUSQLdb.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2561D3C93CE0033AFDE /* JUSQLdb.m */; };
+		EBFEB2601D3C93CE0033AFDE /* JUSQLdb+insert.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB2581D3C93CE0033AFDE /* JUSQLdb+insert.m */; };
+		EBFEB2611D3C93CE0033AFDE /* JUSQLdb+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25A1D3C93CE0033AFDE /* JUSQLdb+Delete.m */; };
+		EBFEB2621D3C93CE0033AFDE /* JUSQLdb+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25C1D3C93CE0033AFDE /* JUSQLdb+Update.m */; };
+		EBFEB2631D3C93CE0033AFDE /* JUSQLdb+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFEB25E1D3C93CE0033AFDE /* JUSQLdb+Select.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,10 +35,10 @@
 
 /* Begin PBXFileReference section */
 		EBFEB22D1D3C93450033AFDE /* libJsonSwithModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJsonSwithModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBFEB2391D3C93600033AFDE /* LEBasicEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEBasicEncode.h; sourceTree = "<group>"; };
-		EBFEB23A1D3C93600033AFDE /* LEBasicEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEBasicEncode.m; sourceTree = "<group>"; };
-		EBFEB23B1D3C93600033AFDE /* LEBasicModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEBasicModels.h; sourceTree = "<group>"; };
-		EBFEB23C1D3C93600033AFDE /* LEBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEBasicModels.m; sourceTree = "<group>"; };
+		EBFEB2391D3C93600033AFDE /* JUBasicEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicEncode.h; sourceTree = "<group>"; };
+		EBFEB23A1D3C93600033AFDE /* JUBasicEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicEncode.m; sourceTree = "<group>"; };
+		EBFEB23B1D3C93600033AFDE /* JUBasicModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicModels.h; sourceTree = "<group>"; };
+		EBFEB23C1D3C93600033AFDE /* JUBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicModels.m; sourceTree = "<group>"; };
 		EBFEB2431D3C93970033AFDE /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		EBFEB2441D3C93970033AFDE /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		EBFEB2451D3C93970033AFDE /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -50,17 +50,17 @@
 		EBFEB24B1D3C93970033AFDE /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		EBFEB24C1D3C93970033AFDE /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		EBFEB24D1D3C93970033AFDE /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		EBFEB2541D3C93CE0033AFDE /* PFBFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFBFMDB.h; sourceTree = "<group>"; };
-		EBFEB2551D3C93CE0033AFDE /* PFBSQLdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFBSQLdb.h; sourceTree = "<group>"; };
-		EBFEB2561D3C93CE0033AFDE /* PFBSQLdb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFBSQLdb.m; sourceTree = "<group>"; };
-		EBFEB2571D3C93CE0033AFDE /* PFBSQLdb+insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFBSQLdb+insert.h"; sourceTree = "<group>"; };
-		EBFEB2581D3C93CE0033AFDE /* PFBSQLdb+insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFBSQLdb+insert.m"; sourceTree = "<group>"; };
-		EBFEB2591D3C93CE0033AFDE /* PFBSQLdb+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFBSQLdb+Delete.h"; sourceTree = "<group>"; };
-		EBFEB25A1D3C93CE0033AFDE /* PFBSQLdb+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFBSQLdb+Delete.m"; sourceTree = "<group>"; };
-		EBFEB25B1D3C93CE0033AFDE /* PFBSQLdb+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFBSQLdb+Update.h"; sourceTree = "<group>"; };
-		EBFEB25C1D3C93CE0033AFDE /* PFBSQLdb+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFBSQLdb+Update.m"; sourceTree = "<group>"; };
-		EBFEB25D1D3C93CE0033AFDE /* PFBSQLdb+Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFBSQLdb+Select.h"; sourceTree = "<group>"; };
-		EBFEB25E1D3C93CE0033AFDE /* PFBSQLdb+Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFBSQLdb+Select.m"; sourceTree = "<group>"; };
+		EBFEB2551D3C93CE0033AFDE /* JUSQLdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUSQLdb.h; sourceTree = "<group>"; };
+		EBFEB2561D3C93CE0033AFDE /* JUSQLdb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUSQLdb.m; sourceTree = "<group>"; };
+		EBFEB2571D3C93CE0033AFDE /* JUSQLdb+insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUSQLdb+insert.h"; sourceTree = "<group>"; };
+		EBFEB2581D3C93CE0033AFDE /* JUSQLdb+insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUSQLdb+insert.m"; sourceTree = "<group>"; };
+		EBFEB2591D3C93CE0033AFDE /* JUSQLdb+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUSQLdb+Delete.h"; sourceTree = "<group>"; };
+		EBFEB25A1D3C93CE0033AFDE /* JUSQLdb+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUSQLdb+Delete.m"; sourceTree = "<group>"; };
+		EBFEB25B1D3C93CE0033AFDE /* JUSQLdb+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUSQLdb+Update.h"; sourceTree = "<group>"; };
+		EBFEB25C1D3C93CE0033AFDE /* JUSQLdb+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUSQLdb+Update.m"; sourceTree = "<group>"; };
+		EBFEB25D1D3C93CE0033AFDE /* JUSQLdb+Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUSQLdb+Select.h"; sourceTree = "<group>"; };
+		EBFEB25E1D3C93CE0033AFDE /* JUSQLdb+Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUSQLdb+Select.m"; sourceTree = "<group>"; };
+		EBFEB2641D3C954B0033AFDE /* JUFMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JUFMDB.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +95,10 @@
 			children = (
 				EBFEB2401D3C93970033AFDE /* FMDataBase */,
 				EBFEB23F1D3C93840033AFDE /* JuFMDB */,
-				EBFEB2391D3C93600033AFDE /* LEBasicEncode.h */,
-				EBFEB23A1D3C93600033AFDE /* LEBasicEncode.m */,
-				EBFEB23B1D3C93600033AFDE /* LEBasicModels.h */,
-				EBFEB23C1D3C93600033AFDE /* LEBasicModels.m */,
+				EBFEB2391D3C93600033AFDE /* JUBasicEncode.h */,
+				EBFEB23A1D3C93600033AFDE /* JUBasicEncode.m */,
+				EBFEB23B1D3C93600033AFDE /* JUBasicModels.h */,
+				EBFEB23C1D3C93600033AFDE /* JUBasicModels.m */,
 			);
 			path = JsonSwithModel;
 			sourceTree = "<group>";
@@ -106,17 +106,17 @@
 		EBFEB23F1D3C93840033AFDE /* JuFMDB */ = {
 			isa = PBXGroup;
 			children = (
-				EBFEB2541D3C93CE0033AFDE /* PFBFMDB.h */,
-				EBFEB2551D3C93CE0033AFDE /* PFBSQLdb.h */,
-				EBFEB2561D3C93CE0033AFDE /* PFBSQLdb.m */,
-				EBFEB2571D3C93CE0033AFDE /* PFBSQLdb+insert.h */,
-				EBFEB2581D3C93CE0033AFDE /* PFBSQLdb+insert.m */,
-				EBFEB2591D3C93CE0033AFDE /* PFBSQLdb+Delete.h */,
-				EBFEB25A1D3C93CE0033AFDE /* PFBSQLdb+Delete.m */,
-				EBFEB25B1D3C93CE0033AFDE /* PFBSQLdb+Update.h */,
-				EBFEB25C1D3C93CE0033AFDE /* PFBSQLdb+Update.m */,
-				EBFEB25D1D3C93CE0033AFDE /* PFBSQLdb+Select.h */,
-				EBFEB25E1D3C93CE0033AFDE /* PFBSQLdb+Select.m */,
+				EBFEB2641D3C954B0033AFDE /* JUFMDB.h */,
+				EBFEB2551D3C93CE0033AFDE /* JUSQLdb.h */,
+				EBFEB2561D3C93CE0033AFDE /* JUSQLdb.m */,
+				EBFEB2571D3C93CE0033AFDE /* JUSQLdb+insert.h */,
+				EBFEB2581D3C93CE0033AFDE /* JUSQLdb+insert.m */,
+				EBFEB2591D3C93CE0033AFDE /* JUSQLdb+Delete.h */,
+				EBFEB25A1D3C93CE0033AFDE /* JUSQLdb+Delete.m */,
+				EBFEB25B1D3C93CE0033AFDE /* JUSQLdb+Update.h */,
+				EBFEB25C1D3C93CE0033AFDE /* JUSQLdb+Update.m */,
+				EBFEB25D1D3C93CE0033AFDE /* JUSQLdb+Select.h */,
+				EBFEB25E1D3C93CE0033AFDE /* JUSQLdb+Select.m */,
 			);
 			path = JuFMDB;
 			sourceTree = "<group>";
@@ -195,16 +195,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBFEB23D1D3C93600033AFDE /* LEBasicEncode.m in Sources */,
+				EBFEB23D1D3C93600033AFDE /* JUBasicEncode.m in Sources */,
 				EBFEB2511D3C93970033AFDE /* FMDatabasePool.m in Sources */,
-				EBFEB2611D3C93CE0033AFDE /* PFBSQLdb+Delete.m in Sources */,
+				EBFEB2611D3C93CE0033AFDE /* JUSQLdb+Delete.m in Sources */,
 				EBFEB2521D3C93970033AFDE /* FMDatabaseQueue.m in Sources */,
-				EBFEB25F1D3C93CE0033AFDE /* PFBSQLdb.m in Sources */,
-				EBFEB2631D3C93CE0033AFDE /* PFBSQLdb+Select.m in Sources */,
-				EBFEB23E1D3C93600033AFDE /* LEBasicModels.m in Sources */,
+				EBFEB25F1D3C93CE0033AFDE /* JUSQLdb.m in Sources */,
+				EBFEB2631D3C93CE0033AFDE /* JUSQLdb+Select.m in Sources */,
+				EBFEB23E1D3C93600033AFDE /* JUBasicModels.m in Sources */,
 				EBFEB24F1D3C93970033AFDE /* FMDatabase.m in Sources */,
-				EBFEB2621D3C93CE0033AFDE /* PFBSQLdb+Update.m in Sources */,
-				EBFEB2601D3C93CE0033AFDE /* PFBSQLdb+insert.m in Sources */,
+				EBFEB2621D3C93CE0033AFDE /* JUSQLdb+Update.m in Sources */,
+				EBFEB2601D3C93CE0033AFDE /* JUSQLdb+insert.m in Sources */,
 				EBFEB2531D3C93970033AFDE /* FMResultSet.m in Sources */,
 				EBFEB2501D3C93970033AFDE /* FMDatabaseAdditions.m in Sources */,
 			);
@@ -332,6 +332,7 @@
 				EBFEB2381D3C93450033AFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

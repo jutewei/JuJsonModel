@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Juvid. All rights reserved.
 //
 
-#import "PFBSQLdb+Delete.h"
+#import "JUSQLdb+Delete.h"
 
-@implementation PFBSQLdb (Delete)
+@implementation JUSQLdb (Delete)
 //删除表数据
 +(BOOL)shDeteleTabData:(NSString *)className delKey:(NSString *)dKey delValue:(NSString *)dValue{
     return [self shDeleteTable:className withSql:[NSString stringWithFormat:@" %@='%@' ",dKey,dValue]];
