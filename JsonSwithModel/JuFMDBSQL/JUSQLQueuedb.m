@@ -100,7 +100,7 @@
                 if ([db executeUpdate:string]) {
                     NSLog(@"添加数据成功成功%@",string);
                 }else{
-                    *rollback=NO;
+                    *rollback=YES;
                     NSLog(@"添加数据失败%@",string);
                 }
             }
