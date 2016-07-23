@@ -100,12 +100,11 @@
                 if ([db executeUpdate:string]) {
                     NSLog(@"添加数据成功成功%@",string);
                 }else{
+                    *rollback=NO;
                     NSLog(@"添加数据失败%@",string);
                 }
             }
-//            if (rollback)  [db rollback];
-//            if (!rollback) [db commit];
-            flag=rollback;
+            flag=*rollback;
         }];
     }else{
         [[JUSQLQueuedb sharedClient] inDatabase:^(FMDatabase *db) {
