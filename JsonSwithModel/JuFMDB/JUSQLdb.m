@@ -9,20 +9,15 @@
 #import "JUSQLdb.h"
 #import <objc/message.h>
 #import <objc/runtime.h>
-//#import "LEFilePath.h"
-//#import "PFBAutoTokenModel.h"
 //#define FriendsList @"Friend_List"
 //#define ChatRecord  @"Chat_Record"
 @implementation JUSQLdb
-+(FMDatabase *)CreatDB:(NSString *)table{
-     NSString *dbPath;
-//    if ([table isEqualToString:@"SHUserTable"]) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [paths objectAtIndex:0];
-        dbPath =[documentDirectory stringByAppendingPathComponent:@"PIFUBAOData.db"];
-//    }else{
-//        dbPath =[LEFilePath shGetFilePath:[NSString stringWithFormat:@"%@/usrdb",UserToken.sh_moblie]fileName:@"pifubao.db"];
-//    }
+
+
++(FMDatabase *)shCreatDB{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *dbPath =[documentDirectory stringByAppendingPathComponent:@"juvid.db"];
     NSLog(@"沙盒路径%@",dbPath);
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath] ;
     if (![db open]) {
@@ -31,21 +26,18 @@
     }
     return db;
 }
-+(FMDatabase *)CreatDB{
-    return [self CreatDB:nil];
-}
 //判定是否存在表明
 +(BOOL)isTableOK:(NSString *)tableName
 {
-    BOOL flag = NO;
-    FMDatabase *db=[self CreatDB:tableName];
+    __block BOOL flag = NO;
+    FMDatabase *db=[self shCreatDB];
     if ([db open]) {
         FMResultSet *rs = [db executeQuery:@"select count(*) as 'count' from sqlite_master where type ='table' and name = ?", tableName];
         while ([rs next]){
             // just print out what we've got in a number of formats.
             NSInteger count = [rs intForColumn:@"count"];
             if (0 == count){
-                 NSLog(@"表不存在 %@",tableName);
+                NSLog(@"表不存在 %@",tableName);
                 flag= NO;
             }
             else{
@@ -53,29 +45,34 @@
                 flag= YES;
             }
         }
-//         [db close];
+        //         [db close];
     }
+
     return flag;
 }
-
-+(BOOL)createTable:(NSString *)className withKeys:(NSArray *)arrKey primaryKey:(NSString *)primaryKey{
+//+(NSString *)shCreateTableSQL:(NSString *)className withKeys:(NSArray *)arrKey primaryKey:(NSString *)primaryKey{
+//    NSMutableArray *creatArr=[NSMutableArray array];
+//    for (NSString *strKey in arrKey) {
+//        if (primaryKey&&[strKey isEqualToString:primaryKey]) {
+//            [creatArr addObject:[NSString stringWithFormat:@"%@ text PRIMARY KEY",strKey]];
+//        }
+//        else{
+//            [creatArr addObject:[NSString stringWithFormat:@"%@ text",strKey]];
+//        }
+//    }
+//    NSMutableString * creatSql =[NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ ",className];
+//    [creatSql appendFormat:@"(%@)",[creatArr componentsJoinedByString:@","]];
+//    return creatSql;
+//}
++(BOOL)shCreateTable:(NSString *)className withKeys:(NSArray *)arrKey primaryKey:(NSString *)primaryKey{
     if ([self isTableOK:className]) {
         return YES;
     }
-    BOOL flag = NO;
-    FMDatabase *db=[self CreatDB:className];
+
+    __block BOOL flag = NO;
+    FMDatabase *db=[self shCreatDB];
     if ([db open]) {
-        NSMutableArray *creatArr=[NSMutableArray array];
-        for (NSString *strKey in arrKey) {
-            if (primaryKey&&[strKey isEqualToString:primaryKey]) {
-                 [creatArr addObject:[NSString stringWithFormat:@"%@ text PRIMARY KEY",strKey]];
-            }
-            else{
-                [creatArr addObject:[NSString stringWithFormat:@"%@ text",strKey]];
-            }
-        }
-        NSMutableString * creatSql =[NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ ",className];
-        [creatSql appendFormat:@"(%@)",[creatArr componentsJoinedByString:@","]];
+        NSString * creatSql=[JUPublicSQL shCreateTableSQL:className withKeys:arrKey primaryKey:primaryKey];
         if ([db executeUpdate:creatSql]) {
             NSLog(@"创建表成功%@",creatSql);
             flag = YES;
@@ -83,19 +80,16 @@
             NSLog(@"创建表失败%@",creatSql);
             flag = NO;
         }
-//         [db close];
     }
 
     return flag;
 }
-
 //删除表
-+(BOOL)dropTable:(NSString *)className{
-    BOOL flag = YES;
-    FMDatabase *db=[self CreatDB:className];
++(BOOL)shDropTable:(NSString *)className{
+    __block BOOL flag = NO;
+    FMDatabase *db=[self shCreatDB];
     if ([db open]) {
         NSString *stringSql=[NSString stringWithFormat:@"DROP TABLE %@",className];
-
         if ([db executeUpdate:stringSql]) {
             NSLog(@"删除表成功成功%@",className);
             flag = YES;
@@ -106,8 +100,7 @@
         }
         [db close];
     }
+
     return flag;
 }
-
-
 @end

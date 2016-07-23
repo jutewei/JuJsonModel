@@ -9,65 +9,32 @@
 #import "JUSQLdb+Update.h"
 
 @implementation JUSQLdb (Update)
-+(BOOL)shUpdateTable:(id)object setKeys:(id)setKeys{
++(BOOL)shUpdateTable:(JUBasicModels *)object setKeys:(id)setKeys{
     NSString *className=NSStringFromClass([object class]);
-
     NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
+    return [self shUpdateTable:className withData:dicKeyVaule setKeys:setKeys];
+}
+
++(BOOL)shUpdateTable:(NSString *)tableName withData:(NSDictionary *)dicObject setKeys:(id)setKeys{
     if ([setKeys isKindOfClass:[NSString class]]) {
         setKeys=@[setKeys];
     }
     NSMutableArray * setArr = [NSMutableArray array];
     NSMutableArray *whereArr = [NSMutableArray array];
 
-    for (NSString *strKey in [dicKeyVaule allKeys]) {
+    for (NSString *strKey in [dicObject allKeys]) {
         if ([setKeys containsObject:strKey]) {
-            [whereArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicKeyVaule[strKey]]];
+            [whereArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicObject[strKey]]];
         }else{
-            if (dicKeyVaule[strKey]&&![dicKeyVaule[strKey] isEqual:@""]) {
-                [setArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicKeyVaule[strKey]]];
+            if (dicObject[strKey]&&![dicObject[strKey] isEqual:@""]) {
+                [setArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicObject[strKey]]];
             }
         }
     }
-
-    return [self shUpdateTable:className set:[setArr componentsJoinedByString:@","] where:[whereArr componentsJoinedByString:@"AND"]];
-
+    return [self shUpdateTable:tableName set:[setArr componentsJoinedByString:@","] where:[whereArr componentsJoinedByString:@"AND"]];
+    
 }
 //更新表数据
-/*
-+(BOOL)UpdateTabData:(id)object PrimaryKey:(NSString *)primaryKey{
-
-    BOOL flag = YES;
-    NSString *className=NSStringFromClass([object class]);
-    FMDatabase *db=[self CreatDB:className];
-
-    NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
-    if ([db open]) {
-        NSMutableString * string_key = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"UPDATE  %@  SET ",className]];
-        NSString *insersql_where;
-        for (NSString *strKey in [dicKeyVaule allKeys]) {
-            if (dicKeyVaule[strKey]&&![dicKeyVaule[strKey] isEqual:@""]) {
-                if ([strKey isEqualToString:primaryKey]) {
-                    insersql_where=[NSString stringWithFormat:@"where %@= '%@'",primaryKey,dicKeyVaule[strKey]];
-                }
-                else{
-                    [string_key appendFormat:@"'%@'='%@',",strKey,dicKeyVaule[strKey]];
-                }
-            }
-
-        }
-        NSString * string_value = [NSString stringWithFormat:@"%@",[string_key substringToIndex:string_key.length - 1]];
-        if ([db executeUpdate:[NSString stringWithFormat:@"%@%@",string_value,insersql_where]]) {
-            NSLog(@"更新表数据成功成功%@",className);
-            flag = YES;
-        }else{
-            NSLog(@"更新表数据失败%@",className);
-            flag = NO;
-        }
-
-    }
-    return flag;
-}*/
-
 +(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setvalue{
     return [self shUpdateTable:table set:[NSString stringWithFormat:@" %@='%@' ",setkey,setvalue]];
 }
@@ -91,10 +58,10 @@
    return [self shUpdateTable:tableName withSql:sqlStr];
 }
 +(BOOL)shUpdateTable:(NSString *)tableName withSql:(NSString *)sqlStr{
-    BOOL flag = NO;
-    FMDatabase *db=[JUSQLdb CreatDB:tableName];
-    NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"UPDATE  %@  SET ",tableName]];
-    [sql appendString:sqlStr];
+    __block BOOL flag = NO;
+
+    FMDatabase *db=[JUSQLdb shCreatDB];
+    NSString * sql= [JUPublicSQL shUpdateSql:tableName withSql:sqlStr];
     if (![db open]) return NO;
     //返回数据库中第一条满足条件的结果
     //    FMResultSet *rs=[db executeQuery:sqlStr];
@@ -106,6 +73,14 @@
         flag = NO;
     }
     [db close];
+
     return flag;
 }
+
+
+//+(NSString *)shUpdateSql:(NSString *)tableName withSql:(NSString *)sqlStr{
+//    NSMutableString * sql=[[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"UPDATE  %@  SET ",tableName]];
+//    [sql appendString:sqlStr];
+//    return sql;
+//}
 @end

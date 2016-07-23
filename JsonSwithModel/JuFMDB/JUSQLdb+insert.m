@@ -11,8 +11,111 @@
 @implementation JUSQLdb (insert)
 //插入表数据
 /**批量插入数据使用事物*/
+
+//插入表数据
++(BOOL)shInsertTable:(JUBasicModels *)object primary:(NSString *)priKey{
+    NSString *tableName=NSStringFromClass([object class]);
+    id dicKeyVaule=[[object class] setModelForDictionary:object];
+    return [self shInsertTable:tableName withData:dicKeyVaule primary:priKey];
+}
+/**拼接插入语句*/
++(NSString *)shSwitchObject:(id)object{
+    NSDictionary *dicObject=@{};
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        dicObject=object;
+    }else if([object isKindOfClass:[JUBasicModels class]]){
+        dicObject=[[object class] setModelForDictionary:object];
+    }
+    NSMutableArray * keyArr = [NSMutableArray array];
+    NSMutableArray * valueArr = [NSMutableArray array];
+    for (NSString *strKey in [dicObject allKeys]) {
+        [keyArr addObject:strKey];
+        [valueArr addObject:[NSString stringWithFormat:@"'%@'",dicObject[strKey]]];
+    }
+    return  [NSString stringWithFormat:@" (%@) VALUES (%@)",[keyArr componentsJoinedByString:@","] ,[valueArr componentsJoinedByString:@","]];
+}
+//+(NSString *)shSqlString:(NSString *)tableName withSql:(NSString *)sqlStr{
+//    NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"INSERT INTO %@",tableName]];
+//    [sql appendString:sqlStr];
+//    return sql;
+//}
+/**插入多条或者单条数据*/
++(BOOL)shInsertTable:(NSString *)tableName withData:(id)object primary:(NSString *)priKey{
+    if ([self shCreateTable:tableName withKeys:[object allKeys]  primaryKey:priKey]) {///< 建表成功后写数据
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            return [self shInsertTable:tableName withSql:[self shSwitchObject:object]];
+        }else if([object isKindOfClass:[NSArray class]]){
+            NSMutableArray *arrSql=[NSMutableArray array];
+            for (id dicData in object) {
+                [arrSql addObject:[JUPublicSQL shInsertSql:tableName withSql:[self shSwitchObject:dicData]]];
+            }
+         return [self shUpdateMulitSQL:arrSql rollBack:NO];
+        }
+    }
+    return NO;
+}
+
++(BOOL)shInsertTable:(NSString *)tableName setKey:(NSString *)setKey setValue:(NSString *)setValue{
+    return [self shInsertTable:tableName withSql:[NSString stringWithFormat:@" (%@) VALUES (%@)",setKey,setValue]];
+}
+/**多条数据**/
++(BOOL)shUpdateMulitSQL:(NSArray *)arrStr rollBack:(BOOL)isRoll{
+    FMDatabase *db=[JUSQLdb shCreatDB];
+    [db open];
+    BOOL isRollBack = NO;
+    if (isRoll) {
+        [db beginTransaction];
+        @try {
+            for (NSString *string in arrStr) {
+                if ([db executeUpdate:string]) {
+                    NSLog(@"添加数据成功成功%@",string);
+                }else{
+                    NSLog(@"添加数据失败%@",string);
+                }
+            }
+        } @catch (NSException *exception) {
+            isRollBack = YES;
+            [db rollback];
+        } @finally {
+            if (!isRollBack) {
+                [db commit];
+            }
+        }
+    }
+    else{
+        for (NSString *string in arrStr) {
+            if ([db executeUpdate:string]) {
+                NSLog(@"添加数据成功成功%@",string);
+            }else{
+                NSLog(@"添加数据失败%@",string);
+            }
+        }
+    }
+
+     [db close];
+    return !isRollBack;
+}
+/**单条数据*/
++(BOOL)shInsertTable:(NSString *)tableName withSql:(NSString *)sqlStr{
+    BOOL flag = NO;
+    FMDatabase *db=[JUSQLdb shCreatDB];
+    NSString * sql=[JUPublicSQL shInsertSql:tableName withSql:sqlStr];
+    if (![db open]) return NO;
+    if ([db executeUpdate:sql]) {
+        NSLog(@"添加数据成功成功%@",sql);
+        flag = YES;
+    }else{
+        NSLog(@"添加数据失败%@",sql);
+        flag = NO;
+    }
+    [db close];
+    return flag;
+}
+
+
+/*
 +(BOOL)shInsertMultTable:(id)objects primary:(NSString *)priKey{
-    FMDatabase *db=[JUSQLdb CreatDB];
+    FMDatabase *db=[PFBSQLdb shCreatDB];
     [db open];
     BOOL isRollBack = NO;
     [db beginTransaction];
@@ -20,7 +123,7 @@
         for (id dbTable in objects) {
             NSString *tableName=NSStringFromClass([dbTable class]);
             NSDictionary *dicKeyVaule=[[dbTable class] setModelForDictionary:dbTable];
-            if ([self createTable:tableName withKeys:[dicKeyVaule allKeys]  primaryKey:priKey]) {
+            if ([self shCreateTable:tableName withKeys:[dicKeyVaule allKeys]  primaryKey:priKey]) {
                 NSMutableArray * keyArr = [NSMutableArray array];
                 NSMutableArray * valueArr = [NSMutableArray array];
                 for (NSString *strKey in [dicKeyVaule allKeys]) {
@@ -45,45 +148,5 @@
     }
     [db close];
     return !isRollBack;
-}
-+(NSString *)shSpliceSql:(NSString *)tableName withSql:(NSString *)sqlStr{
-    NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"INSERT INTO %@",tableName]];
-    [sql appendString:sqlStr];
-    return sql;
-}
-//插入表数据
-+(BOOL)shInsertTable:(id)object primary:(NSString *)priKey{
-    NSString *tableName=NSStringFromClass([object class]);
-    NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
-    if ([self createTable:tableName withKeys:[dicKeyVaule allKeys]  primaryKey:priKey]) {
-        NSMutableArray * keyArr = [NSMutableArray array];
-        NSMutableArray * valueArr = [NSMutableArray array];
-        for (NSString *strKey in [dicKeyVaule allKeys]) {
-            [keyArr addObject:strKey];
-            [valueArr addObject:[NSString stringWithFormat:@"'%@'",dicKeyVaule[strKey]]];
-        }
-        return [self shInsertTable:tableName setKey:[keyArr componentsJoinedByString:@","] setValue:[valueArr componentsJoinedByString:@","]];
-    }
-    return NO;
-}
-+(BOOL)shInsertTable:(NSString *)tableName setKey:(NSString *)setKey setValue:(NSString *)setValue{
-    return [self shInsertTable:tableName withSql:[NSString stringWithFormat:@" (%@) VALUES (%@)",setKey,setValue]];
-}
-+(BOOL)shInsertTable:(NSString *)tableName withSql:(NSString *)sqlStr{
-    BOOL flag = NO;
-    FMDatabase *db=[JUSQLdb CreatDB:tableName];
-    NSMutableString * sql= [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"INSERT INTO %@",tableName]];
-    [sql appendString:sqlStr];
-    if (![db open]) return NO;
-    if ([db executeUpdate:sql]) {
-        NSLog(@"添加数据成功成功%@",sql);
-        flag = YES;
-    }else{
-        NSLog(@"添加数据失败%@",sql);
-        flag = NO;
-    }
-    [db close];
-    return flag;
-}
-
+}*/
 @end

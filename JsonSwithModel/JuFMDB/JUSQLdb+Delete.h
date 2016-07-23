@@ -12,13 +12,24 @@
 /**
  *  @author Juvid, 16-07-11 15:07:27
  *
- *  删除表数据（推荐使用，对象属性 值为nil或为空,不加人where）
+ *  删除表数据（推荐使用，对象属性 值为nil或为空不加人where条件）
  *
  *  @param object 表对象
  *
  *  @return 操作状态
  */
-+(BOOL)shDeteleTabData:(id)object;
++(BOOL)shDeteleTabData:(JUBasicModels *)object;
+/**
+ *  @author Juvid, 16-07-22 13:07:19
+ *
+ *  删除表数据（推荐使用，对象属性 值为nil或为空,不加人where条件）
+ *
+ *  @param dicObject 要删除的关键键值
+ *  @param tableName 表名
+ *
+ *  @return 操作状态
+ */
++(BOOL)shDeteleTabData:(NSDictionary *)dicObject table:(NSString *)tableName;
 //删除表数据
 /**
  *  @author Juvid, 16-07-11 15:07:58
@@ -31,6 +42,7 @@
  *
  *  @return 操作状态
  */
+
 +(BOOL)shDeteleTabData:(NSString *)className delKey:(NSString *)dKey delValue:(NSString *)dValue;
 /**
  *  @author Juvid, 16-07-11 15:07:31
@@ -75,4 +87,7 @@
  *  @return 操作状态
  */
 +(BOOL)shCleanAllData:(NSString *)tableName;
+
+///**SQL拼接不执行任何数据库操作提供子类调用*/
+//+(NSString *)shDeleteSql:(NSString *)tableName withSql:(NSString *)sqlStr;
 @end

@@ -22,7 +22,30 @@
  *
  *  @return 操作状态
  */
-+(BOOL)shInsertTable:(id)object primary:(NSString *)priKey;
++(BOOL)shInsertTable:(JUBasicModels *)object primary:(NSString *)priKey;
+/**
+ *  @author Juvid, 16-07-22 13:07:57
+ *
+ *   插入数据（包括建表）
+ *
+ *  @param tableName 表名
+ *  @param object    字典，数组
+ *  @param priKey    主键（不设置传nil）
+ *
+ *  @return 操作状态
+ */
++(BOOL)shInsertTable:(NSString *)tableName withData:(id)object primary:(NSString *)priKey;
+/**
+ *  @author Juvid, 16-07-23 11:07:22
+ *
+ *  多条数据更新操作（事物）
+ *
+ *  @param tableName 表名
+ *  @param arrStr    SQL更新语句组
+ *
+ *  @return <#return value description#>
+ */
++(BOOL)shUpdateMulitSQL:(NSArray *)arrStr rollBack:(BOOL)isRoll;
 ///**
 // *  @author Juvid, 16-07-11 13:07:42
 // *
@@ -45,5 +68,6 @@
 // *
 // *  @return 操作状态
 // */
-//+(BOOL)shInsertTable:(NSString *)tableName withSql:(NSString *)sqlStr;
+///**SQL拼接不执行任何数据库操作提供子类调用*/
+//+(NSString *)shSqlString:(NSString *)tableName withSql:(NSString *)sqlStr;
 @end

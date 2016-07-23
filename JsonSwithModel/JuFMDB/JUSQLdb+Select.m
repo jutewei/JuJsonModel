@@ -88,19 +88,19 @@
 }
 
 +(NSMutableArray *)shSelectTable:(NSString *)tableName
-                         withSql:(NSString *)strSql
-{
-    FMDatabase *db=[JUSQLdb CreatDB:tableName];
+                         withSql:(NSString *)strSql{
+
     NSMutableArray *arrResult=[NSMutableArray array];
+    FMDatabase *db=[JUSQLdb shCreatDB];
     if ([db open]) {
         FMResultSet *rs=[db executeQuery:strSql];
         while ([rs next]) {
             NSMutableDictionary *dicResult=[NSMutableDictionary dictionaryWithDictionary:[rs resultDictionary]];
             [arrResult addObject:dicResult];
+
         }
         [db close];
     }
-
     return arrResult;
 
 }

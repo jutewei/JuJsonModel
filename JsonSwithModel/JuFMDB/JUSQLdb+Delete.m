@@ -27,16 +27,27 @@
     return [self shDeleteTable:tableName withSql:[arrWhere componentsJoinedByString:@" AND "]];
 }
 //删除表数据
-+(BOOL)shDeteleTabData:(id)object{
++(BOOL)shDeteleTabData:(JUBasicModels *)object{
     NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
-    return [self shDeteleTabData:NSStringFromClass([object class]) whereDic:dicKeyVaule];
+    return [self shDeteleTabData:dicKeyVaule table:NSStringFromClass([object class])];
 }
++(BOOL)shDeteleTabData:(NSDictionary *)dicObject table:(NSString *)tableName{
+    return [self shDeteleTabData:tableName whereDic:dicObject];
+}
+
+//+(NSString *)shDeleteSql:(NSString *)tableName withSql:(NSString *)sqlStr{
+//
+//    NSMutableString * sql= [NSMutableString stringWithString:[NSString stringWithFormat:@"DELETE %@ FROM %@ WHERE ",sqlStr?@"":@"*",tableName]];
+//    if (sqlStr) {
+//        [sql appendString:sqlStr];
+//    }
+//    return sql;
+//}
 +(BOOL)shDeleteTable:(NSString *)tableName withSql:(NSString *)sqlStr{
-    FMDatabase *db=[self CreatDB:tableName];
-    BOOL flag = NO;
+    __block BOOL flag = NO;
+    FMDatabase *db=[self shCreatDB];
     if ([db open]) {
-        NSMutableString *sql=[NSMutableString stringWithString:[NSString stringWithFormat:@"DELETE FROM %@ WHERE ",tableName]];
-        [sql appendString:sqlStr];
+        NSString *sql=[JUPublicSQL shDeleteSql:tableName withSql:sqlStr];
         if ([db executeUpdate:sql]) {
             NSLog(@"删除表数据成功成功%@",sql);
             flag = YES;
@@ -44,16 +55,16 @@
             NSLog(@"删除表数据失败%@",sql);
             flag = NO;
         }
-         [db close];
+        [db close];
     }
-
     return flag;
 }
 +(BOOL)shCleanAllData:(NSString *)tableName{
-    FMDatabase *db=[self CreatDB:tableName];
-    BOOL flag = NO;
+    __block BOOL flag = NO;
+
+    FMDatabase *db=[self shCreatDB];
     if ([db open]) {
-        NSMutableString *sql=[NSMutableString stringWithString:[NSString stringWithFormat:@"DELETE * FROM %@ ",tableName]];
+        NSString *sql=[JUPublicSQL shDeleteSql:tableName withSql:nil];
         if ([db executeUpdate:sql]) {
             NSLog(@"清空数据成功 %@",sql);
             flag = YES;
@@ -61,7 +72,7 @@
             NSLog(@"清空数据失败 %@",sql);
             flag = NO;
         }
-         [db close];
+        [db close];
     }
 
     return flag;

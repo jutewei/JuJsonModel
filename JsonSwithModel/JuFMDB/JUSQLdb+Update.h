@@ -19,8 +19,19 @@
  *
  *  @return 返回操作状态
  */
-+(BOOL)shUpdateTable:(id)object setKeys:(id)setKeys;
-
++(BOOL)shUpdateTable:(JUBasicModels *)object setKeys:(id)setKeys;
+/**
+ *  @author Juvid, 16-07-22 13:07:41
+ *
+ *  更新表
+ *
+ *  @param tableName 表名
+ *  @param dicObject 键值
+ *  @param setKeys   SET 的所有Key（数组或单个字符串Key
+ *
+ *  @return 返回操作状态
+ */
++(BOOL)shUpdateTable:(NSString *)tableName withData:(NSDictionary *)dicObject setKeys:(id)setKeys;
 //+(BOOL)UpdateTabData:(id)object PrimaryKey:(NSString *)primaryKey;//更新表
 
 /**
@@ -60,6 +71,7 @@
  *  @return 返回操作状态
  */
 +(BOOL)shUpdateTable:(NSString *)tableName set:(NSString *)setSql;
+
 /**
  *  @author Juvid, 16-07-11 12:07:14
  *
@@ -83,4 +95,6 @@
  *  @return 返回操作状态
  */
 +(BOOL)shUpdateTable:(NSString *)tableName withSql:(NSString *)sqlStr;
+///**SQL拼接不执行任何数据库操作提供子类调用*/
+//+(NSString *)shUpdateSql:(NSString *)tableName withSql:(NSString *)sqlStr;
 @end
