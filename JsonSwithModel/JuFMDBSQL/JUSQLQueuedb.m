@@ -103,8 +103,8 @@
                     NSLog(@"添加数据失败%@",string);
                 }
             }
-            if (rollback)  [db rollback];
-            if (!rollback) [db commit];
+//            if (rollback)  [db rollback];
+//            if (!rollback) [db commit];
             flag=rollback;
         }];
     }else{
