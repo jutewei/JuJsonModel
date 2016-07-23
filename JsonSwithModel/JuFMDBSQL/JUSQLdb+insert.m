@@ -55,7 +55,7 @@
             for (id dicData in object) {
                 [arrSql addObject:[JUPublicSQL shInsertSql:tableName withSql:[self shSwitchObject:dicData]]];
             }
-            return [self shUpdateMulitSQL:arrSql rollBack:NO];
+            return [self shUpdateMulitSQL:arrSql transaction:YES];
         }
     }
     return NO;
@@ -65,11 +65,11 @@
     return [self shInsertTable:tableName withSql:[NSString stringWithFormat:@" (%@) VALUES (%@)",setKey,setValue]];
 }
 /**多条数据**/
-+(BOOL)shUpdateMulitSQL:(NSArray *)arrStr rollBack:(BOOL)isRoll{
++(BOOL)shUpdateMulitSQL:(NSArray *)arrStr transaction:(BOOL)isTrans{
     FMDatabase *db=[JUSQLdb shCreatDB];
     [db open];
     BOOL isRollBack = NO;
-    if (isRoll) {
+    if (isTrans) {
         [db beginTransaction];
         @try {
             for (NSString *string in arrStr) {

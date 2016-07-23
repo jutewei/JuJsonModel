@@ -45,7 +45,7 @@
  *
  *  @return <#return value description#>
  */
-+(BOOL)shUpdateMulitSQL:(NSArray *)arrStr rollBack:(BOOL)isRoll;
++(BOOL)shUpdateMulitSQL:(NSArray *)arrStr transaction:(BOOL)isTrans;
 ///**
 // *  @author Juvid, 16-07-11 13:07:42
 // *

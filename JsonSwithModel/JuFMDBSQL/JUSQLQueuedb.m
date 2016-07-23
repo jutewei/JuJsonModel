@@ -92,9 +92,9 @@
     }];
     return flag;
 }
-+(BOOL)shUpdateMulitSQL:(NSArray *)arrStr rollBack:(BOOL)isRoll{
++(BOOL)shUpdateMulitSQL:(NSArray *)arrStr transaction:(BOOL)isTrans{
    __block  BOOL flag = NO;
-    if (isRoll) {
+    if (isTrans) {
         [[JUSQLQueuedb sharedClient] inTransaction:^(FMDatabase *db, BOOL *rollback) {
             for (NSString *string in arrStr) {
                 if ([db executeUpdate:string]) {
