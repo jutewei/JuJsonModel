@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC6B549B1D43A43F00FC5ADC /* JUBasicEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54871D43A43F00FC5ADC /* JUBasicEncode.m */; };
-		DC6B549C1D43A43F00FC5ADC /* JUBasicModels.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54891D43A43F00FC5ADC /* JUBasicModels.m */; };
 		DC6B549D1D43A43F00FC5ADC /* JUSQLdb+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B548D1D43A43F00FC5ADC /* JUSQLdb+Delete.m */; };
 		DC6B549E1D43A43F00FC5ADC /* JUSQLdb+insert.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B548F1D43A43F00FC5ADC /* JUSQLdb+insert.m */; };
 		DC6B549F1D43A43F00FC5ADC /* JUSQLdb+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54911D43A43F00FC5ADC /* JUSQLdb+Select.m */; };
@@ -47,10 +45,6 @@
 		DC6B54821D43A43200FC5ADC /* FMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		DC6B54831D43A43200FC5ADC /* FMResultSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		DC6B54841D43A43200FC5ADC /* FMResultSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		DC6B54861D43A43F00FC5ADC /* JUBasicEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicEncode.h; sourceTree = "<group>"; };
-		DC6B54871D43A43F00FC5ADC /* JUBasicEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicEncode.m; sourceTree = "<group>"; };
-		DC6B54881D43A43F00FC5ADC /* JUBasicModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicModels.h; sourceTree = "<group>"; };
-		DC6B54891D43A43F00FC5ADC /* JUBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicModels.m; sourceTree = "<group>"; };
 		DC6B548B1D43A43F00FC5ADC /* JUFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUFMDB.h; sourceTree = "<group>"; };
 		DC6B548C1D43A43F00FC5ADC /* JUSQLdb+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JUSQLdb+Delete.h"; sourceTree = "<group>"; };
 		DC6B548D1D43A43F00FC5ADC /* JUSQLdb+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JUSQLdb+Delete.m"; sourceTree = "<group>"; };
@@ -96,17 +90,6 @@
 				DC6B54841D43A43200FC5ADC /* FMResultSet.m */,
 			);
 			path = FMDB;
-			sourceTree = "<group>";
-		};
-		DC6B54851D43A43F00FC5ADC /* JuBaseModel */ = {
-			isa = PBXGroup;
-			children = (
-				DC6B54861D43A43F00FC5ADC /* JUBasicEncode.h */,
-				DC6B54871D43A43F00FC5ADC /* JUBasicEncode.m */,
-				DC6B54881D43A43F00FC5ADC /* JUBasicModels.h */,
-				DC6B54891D43A43F00FC5ADC /* JUBasicModels.m */,
-			);
-			path = JuBaseModel;
 			sourceTree = "<group>";
 		};
 		DC6B548A1D43A43F00FC5ADC /* JuFMDBSQL */ = {
@@ -159,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				DC6B54791D43A43200FC5ADC /* FMDB */,
-				DC6B54851D43A43F00FC5ADC /* JuBaseModel */,
 				DC6B548A1D43A43F00FC5ADC /* JuFMDBSQL */,
 			);
 			path = JsonSwithModel;
@@ -230,8 +212,6 @@
 				DC6B54A21D43A43F00FC5ADC /* JUSQLQueuedb.m in Sources */,
 				DC6B549F1D43A43F00FC5ADC /* JUSQLdb+Select.m in Sources */,
 				DC6B54A11D43A43F00FC5ADC /* JUSQLdb.m in Sources */,
-				DC6B549B1D43A43F00FC5ADC /* JUBasicEncode.m in Sources */,
-				DC6B549C1D43A43F00FC5ADC /* JUBasicModels.m in Sources */,
 				DC6B54A31D43A43F00FC5ADC /* JUPublicSQL.m in Sources */,
 				DC6B54A51D43A44700FC5ADC /* FMDatabase.m in Sources */,
 				DC6B54A41D43A44400FC5ADC /* FMDatabaseAdditions.m in Sources */,
