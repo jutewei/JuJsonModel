@@ -45,7 +45,7 @@
  *
  *  @return 返回操作状态
  */
-+(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setvalue;
++(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setValue;
 /**
  *  @author Juvid, 16-07-11 12:07:20
  *

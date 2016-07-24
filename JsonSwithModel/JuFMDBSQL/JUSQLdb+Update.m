@@ -35,8 +35,8 @@
     
 }
 //更新表数据
-+(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setvalue{
-    return [self shUpdateTable:table set:[NSString stringWithFormat:@" %@='%@' ",setkey,setvalue]];
++(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setValue{
+    return [self shUpdateTable:table set:[NSString stringWithFormat:@" %@='%@' ",setkey,setValue]];
 }
 
 +(BOOL)shUpdateTable:(NSString *)table setKey:(NSString *)setkey setValue:(NSString *)setvalue whereKey:(NSString*)wherekey whereValue:(NSString*)whereValue{
