@@ -92,26 +92,26 @@
     }];
     return flag;
 }
-+(BOOL)shUpdateMulitSQL:(NSArray *)arrStr transaction:(BOOL)isTrans{
++(BOOL)shUpdateMulitSQL:(NSArray *)allSQL transaction:(BOOL)isTrans{
    __block  BOOL flag = NO;
     if (isTrans) {
         [[JUSQLQueuedb sharedClient] inTransaction:^(FMDatabase *db, BOOL *rollback) {
-            for (NSString *string in arrStr) {
+            for (NSString *string in allSQL) {
                 if (![db executeUpdate:string]) flag=YES;
             }
            *rollback=!flag;
         }];
     }else{
         [[JUSQLQueuedb sharedClient] inDatabase:^(FMDatabase *db) {
-            for (NSString *string in arrStr) {
+            for (NSString *string in allSQL) {
                 if (![db executeUpdate:string]) flag = YES;
             }
         }];
     }
     if (!flag) {
-          NSLog(@"批量添加数据成功%@",arrStr);
+          NSLog(@"批量添加数据成功%@",allSQL);
     }else{
-          NSLog(@"批量添加数据失败%@",arrStr);
+          NSLog(@"批量添加数据失败%@",allSQL);
     }
     return !flag;
 }

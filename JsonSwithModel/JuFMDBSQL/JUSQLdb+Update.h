@@ -27,7 +27,7 @@
  *
  *  @param tableName 表名
  *  @param dicObject 键值
- *  @param setKeys   SET 的所有Key（数组或单个字符串Key
+ *  @param setKeys   SET 的所有Key（数组或单个字符串Key)
  *
  *  @return 返回操作状态
  */

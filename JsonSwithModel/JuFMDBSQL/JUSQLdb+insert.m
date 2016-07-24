@@ -12,67 +12,40 @@
 //插入表数据
 /**批量插入数据使用事物*/
 
-//插入表数据
+//插入表数据(单条)
 +(BOOL)shInsertTable:(JUBasicModels *)object primary:(NSString *)priKey{
     NSString *tableName=NSStringFromClass([object class]);
-    id dicKeyVaule=[[object class] setModelForDictionary:object];
-    return [self shInsertTable:tableName withData:dicKeyVaule primary:priKey];
-}
-+(NSDictionary *)shSwitchDic:(id)object{
-    if ([object isKindOfClass:[NSDictionary class]]) {
-        return object;
-    }else if([object isKindOfClass:[NSArray class]]&&[object count]>0){
-        return [self shSwitchDic:object[0]];
-    }else if([object isKindOfClass:[JUBasicModels class]]){
-        return [[object class] setModelForDictionary:object];
-    }
-    return @{};
-}
-/**拼接插入语句*/
-+(NSString *)shSwitchObject:(id)object{
-    NSDictionary *dicObject=[self shSwitchDic:object];
-    //    if ([object isKindOfClass:[NSDictionary class]]) {
-    //        dicObject=object;
-    //    }else if([object isKindOfClass:[JUBasicModels class]]){
-    //        dicObject=[[object class] setModelForDictionary:object];
-    //    }
-    NSMutableArray * keyArr = [NSMutableArray array];
-    NSMutableArray * valueArr = [NSMutableArray array];
-    for (NSString *strKey in [dicObject allKeys]) {
-        [keyArr addObject:strKey];
-        [valueArr addObject:[NSString stringWithFormat:@"'%@'",dicObject[strKey]]];
-    }
-    return  [NSString stringWithFormat:@" (%@) VALUES (%@)",[keyArr componentsJoinedByString:@","] ,[valueArr componentsJoinedByString:@","]];
+    return [self shInsertTable:tableName withData:object primary:priKey];
 }
 /**插入多条或者单条数据*/
 +(BOOL)shInsertTable:(NSString *)tableName withData:(id)object primary:(NSString *)priKey{
-    NSDictionary *dicObject=[self shSwitchDic:object];
-    if ([self shCreateTable:tableName withKeys:[dicObject allKeys]  primaryKey:priKey]) {///< 建表成功后写数据
+    NSArray *allKeys=[[self shObjectForDic:object] allKeys];///< 获取建表所有key
+    if ([self shCreateTable:tableName withKeys:allKeys  primaryKey:priKey]) {///< 建表成功后写数据
         if ([object isKindOfClass:[NSDictionary class]]) {
-            return [self shInsertTable:tableName withSql:[self shSwitchObject:object]];
+            return [self shInsertTable:tableName withSql:[self shObjectForSQL:object]];
         }else if([object isKindOfClass:[NSArray class]]){
             NSMutableArray *arrSql=[NSMutableArray array];
             for (id dicData in object) {
-                [arrSql addObject:[JUPublicSQL shInsertSql:tableName withSql:[self shSwitchObject:dicData]]];
+                [arrSql addObject:[JUPublicSQL shInsertSql:tableName withSql:[self shObjectForSQL:dicData]]];
             }
             return [self shUpdateMulitSQL:arrSql transaction:YES];
         }
     }
     return NO;
 }
-
+/*
 +(BOOL)shInsertTable:(NSString *)tableName setKey:(NSString *)setKey setValue:(NSString *)setValue{
     return [self shInsertTable:tableName withSql:[NSString stringWithFormat:@" (%@) VALUES (%@)",setKey,setValue]];
-}
+}*/
 /**多条数据**/
-+(BOOL)shUpdateMulitSQL:(NSArray *)arrStr transaction:(BOOL)isTrans{
++(BOOL)shUpdateMulitSQL:(NSArray *)allSQL transaction:(BOOL)isTrans{
     FMDatabase *db=[JUSQLdb shCreatDB];
     [db open];
     BOOL isRollBack = NO;
     if (isTrans) {
         [db beginTransaction];
         @try {
-            for (NSString *string in arrStr) {
+            for (NSString *string in allSQL) {
                 [db executeUpdate:string];
             }
         } @catch (NSException *exception) {
@@ -83,14 +56,14 @@
         }
     }
     else{
-        for (NSString *string in arrStr) {
+        for (NSString *string in allSQL) {
             if (![db executeUpdate:string]) isRollBack = YES;
         }
     }
     if (!isRollBack) {
-        NSLog(@"批量添加数据成功%@",arrStr);
+        NSLog(@"批量添加数据成功%@",allSQL);
     }else{
-        NSLog(@"批量添加数据失败%@",arrStr);
+        NSLog(@"批量添加数据失败%@",allSQL);
     }
     [db close];
     return !isRollBack;
@@ -110,6 +83,27 @@
     }
     [db close];
     return flag;
+}
++(NSDictionary *)shObjectForDic:(id)object{
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        return object;
+    }else if([object isKindOfClass:[NSArray class]]&&[object count]>0){
+        return [self shObjectForDic:object[0]];
+    }else if([object isKindOfClass:[JUBasicModels class]]){
+        return [[object class] setModelForDictionary:object];
+    }
+    return @{};
+}
+/**拼接插入语句*/
++(NSString *)shObjectForSQL:(id)object{
+    NSDictionary *dicObject=[self shObjectForDic:object];
+    NSMutableArray * keyArr = [NSMutableArray array];
+    NSMutableArray * valueArr = [NSMutableArray array];
+    for (NSString *strKey in [dicObject allKeys]) {
+        [keyArr addObject:strKey];
+        [valueArr addObject:[NSString stringWithFormat:@"'%@'",dicObject[strKey]]];
+    }
+    return  [NSString stringWithFormat:@" (%@) VALUES (%@)",[keyArr componentsJoinedByString:@","] ,[valueArr componentsJoinedByString:@","]];
 }
 
 /*

@@ -19,7 +19,7 @@
     if ([setKeys isKindOfClass:[NSString class]]) {
         setKeys=@[setKeys];
     }
-    NSMutableArray * setArr = [NSMutableArray array];
+    NSMutableArray *setArr = [NSMutableArray array];
     NSMutableArray *whereArr = [NSMutableArray array];
 
     for (NSString *strKey in [dicObject allKeys]) {
