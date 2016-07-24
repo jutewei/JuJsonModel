@@ -97,27 +97,23 @@
     if (isTrans) {
         [[JUSQLQueuedb sharedClient] inTransaction:^(FMDatabase *db, BOOL *rollback) {
             for (NSString *string in arrStr) {
-                if ([db executeUpdate:string]) {
-                    NSLog(@"添加数据成功成功%@",string);
-                }else{
-                    *rollback=YES;
-                    NSLog(@"添加数据失败%@",string);
-                }
+                if (![db executeUpdate:string]) flag=YES;
             }
-            flag=*rollback;
+           *rollback=!flag;
         }];
     }else{
         [[JUSQLQueuedb sharedClient] inDatabase:^(FMDatabase *db) {
             for (NSString *string in arrStr) {
-                if ([db executeUpdate:string]) {
-                    NSLog(@"添加数据成功成功%@",string);
-                }else{
-                    NSLog(@"添加数据失败%@",string);
-                }
+                if (![db executeUpdate:string]) flag = YES;
             }
         }];
     }
-    return YES;
+    if (!flag) {
+          NSLog(@"批量添加数据成功%@",arrStr);
+    }else{
+          NSLog(@"批量添加数据失败%@",arrStr);
+    }
+    return !flag;
 }
 /**清空表*/
 +(BOOL)shCleanAllData:(NSString *)tableName{

@@ -73,31 +73,25 @@
         [db beginTransaction];
         @try {
             for (NSString *string in arrStr) {
-                if ([db executeUpdate:string]) {
-                    NSLog(@"添加数据成功成功%@",string);
-                }else{
-                    NSLog(@"添加数据失败%@",string);
-                }
+                [db executeUpdate:string];
             }
         } @catch (NSException *exception) {
             isRollBack = YES;
             [db rollback];
         } @finally {
-            if (!isRollBack) {
-                [db commit];
-            }
+            if (!isRollBack)[db commit];
         }
     }
     else{
         for (NSString *string in arrStr) {
-            if ([db executeUpdate:string]) {
-                NSLog(@"添加数据成功成功%@",string);
-            }else{
-                NSLog(@"添加数据失败%@",string);
-            }
+            if (![db executeUpdate:string]) isRollBack = YES;
         }
     }
-    
+    if (!isRollBack) {
+        NSLog(@"批量添加数据成功%@",arrStr);
+    }else{
+        NSLog(@"批量添加数据失败%@",arrStr);
+    }
     [db close];
     return !isRollBack;
 }
