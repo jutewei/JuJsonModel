@@ -23,9 +23,9 @@
     NSMutableArray *whereArr = [NSMutableArray array];
 
     for (NSString *strKey in [dicObject allKeys]) {
-        if ([setKeys containsObject:strKey]) {
+        if ([setKeys containsObject:strKey]) {///< 设置要更新的条件
             [whereArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicObject[strKey]]];
-        }else{
+        }else{///< 设置要更新的值
             if (dicObject[strKey]&&![dicObject[strKey] isEqual:@""]) {
                 [setArr addObject:[NSString stringWithFormat:@" %@='%@' ",strKey,dicObject[strKey]]];
             }
@@ -73,14 +73,7 @@
         flag = NO;
     }
     [db close];
-
     return flag;
 }
 
-
-//+(NSString *)shUpdateSql:(NSString *)tableName withSql:(NSString *)sqlStr{
-//    NSMutableString * sql=[[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"UPDATE  %@  SET ",tableName]];
-//    [sql appendString:sqlStr];
-//    return sql;
-//}
 @end
