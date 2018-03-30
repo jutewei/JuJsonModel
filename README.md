@@ -54,4 +54,5 @@ OC网络json数据转模型，zip包中工具可实现转换并生成相应的�
  *
  *  @return 返回字典
  */
+ 
 +(NSArray *) setModelForArray :(NSArray *) arr;
