@@ -69,6 +69,7 @@
 		DC6B54AD1D43A67800FC5ADC /* JuBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuBasicModels.m; sourceTree = "<group>"; };
 		EBC10014206E2E58005DC92B /* NSArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
 		EBC10015206E2E58005DC92B /* NSArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
+		EBC1003D206E3248005DC92B /* JsonModel.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = JsonModel.zip; sourceTree = "<group>"; };
 		EBFEB22D1D3C93450033AFDE /* libJsonSwithModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJsonSwithModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,7 +132,7 @@
 			path = SQLHead;
 			sourceTree = "<group>";
 		};
-		DC6B54A91D43A67800FC5ADC /* JUModel */ = {
+		DC6B54A91D43A67800FC5ADC /* JuModel */ = {
 			isa = PBXGroup;
 			children = (
 				DC6B54AA1D43A67800FC5ADC /* JuBasicEncode.h */,
@@ -141,7 +142,15 @@
 				EBC10014206E2E58005DC92B /* NSArray+Safe.h */,
 				EBC10015206E2E58005DC92B /* NSArray+Safe.m */,
 			);
-			path = JUModel;
+			path = JuModel;
+			sourceTree = "<group>";
+		};
+		EBC1003B206E3204005DC92B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EBC1003D206E3248005DC92B /* JsonModel.zip */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		EBFEB2241D3C93450033AFDE = {
@@ -163,8 +172,9 @@
 		EBFEB22F1D3C93450033AFDE /* JsonSwithModel */ = {
 			isa = PBXGroup;
 			children = (
-				DC6B54A91D43A67800FC5ADC /* JUModel */,
+				DC6B54A91D43A67800FC5ADC /* JuModel */,
 				DC6B54791D43A43200FC5ADC /* FMDB */,
+				EBC1003B206E3204005DC92B /* Tools */,
 				DC6B548A1D43A43F00FC5ADC /* JuFMDBSQL */,
 			);
 			path = JsonSwithModel;
