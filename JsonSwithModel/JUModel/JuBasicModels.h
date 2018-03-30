@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 #import "JuBasicEncode.h"
+#import "NSArray+Safe.h"
 #define Pro_Prefix @"sh_"
 @interface JuBasicModels : JuBasicEncode
 /**
