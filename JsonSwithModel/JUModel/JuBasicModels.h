@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
-#import "JUBasicEncode.h"
+#import "JuBasicEncode.h"
 #define Pro_Prefix @"sh_"
-@interface JUBasicModels : JUBasicEncode
+@interface JuBasicModels : JuBasicEncode
 /**
  *  @author Juvid, 15-09-11 11:09:42
  *
@@ -18,7 +18,7 @@
  *
  *  @return 返回对象
  */
-+(id)le_InitModel;
++(id)juInitModel;
 /**
  *  @author Juvid, 15-07-15 10:07:47
  *
@@ -50,6 +50,16 @@
  *  @return 返回转换好的数组，数组里为对象
  */
 +(NSArray *) setArrayForModel :(NSArray *) arr ;
+/**
+ *  @author Juvid, 15-07-15 10:07:34
+ *
+ *  网络获取数据数组转换
+ *
+ *  @param arr 网络返回的数组包含相同的字典
+ *
+ *  @return 返回转换好的数组，数组里为数组
+ */
++(NSArray *) setArray :(NSArray *) arr ;
 /**
  *  @author Juvid, 15-07-15 10:07:42
  *

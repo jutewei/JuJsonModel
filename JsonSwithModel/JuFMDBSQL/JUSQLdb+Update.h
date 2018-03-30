@@ -19,7 +19,7 @@
  *
  *  @return 返回操作状态
  */
-+(BOOL)shUpdateTable:(JUBasicModels *)object setKeys:(id)setKeys;
++(BOOL)shUpdateTable:(JuBasicModels *)object setKeys:(id)setKeys;
 /**
  *  @author Juvid, 16-07-22 13:07:41
  *

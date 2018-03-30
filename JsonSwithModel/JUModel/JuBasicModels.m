@@ -6,16 +6,16 @@
 //  Copyright (c) 2015年 Juvid's. All rights reserved.
 //
 
-#import "JUBasicModels.h"
+#import "JuBasicModels.h"
 
-@interface JUBasicModels (){
+@interface JuBasicModels (){
     NSArray *sh_ArrProperty;//所以属性
 }
 
 @end
 
-@implementation JUBasicModels
-+(id)le_InitModel{
+@implementation JuBasicModels
++(id)juInitModel{
     id  baseModel = [[[self class] alloc]init] ;
     return baseModel;
 }
@@ -40,7 +40,7 @@
     return [self setDictionaryForModel:dic withObject:nil] ;
 }
 -(id) setDictionaryForModel :(NSDictionary *) dic{
-    return [JUBasicModels setDictionaryForModel:dic withObject:self];
+    return [JuBasicModels setDictionaryForModel:dic withObject:self];
 }
 //字典转换成对象
 +(id) setDictionaryForModel :(NSDictionary *) dic withObject:(id)baseModel{
@@ -50,11 +50,11 @@
         baseModel = [[[self class] alloc]init] ;
     }
     if (![dic isKindOfClass:[NSDictionary class]]) {
-        if([dic isKindOfClass:[JUBasicModels class]])return dic;
+        if([dic isKindOfClass:[JuBasicModels class]])return dic;
         return baseModel;
     }
     Class class = [baseModel class];
-    while (class!=[JUBasicModels class]) {
+    while (class!=[JuBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)
@@ -65,10 +65,19 @@
             if (![propertType hasPrefix:@"Tc,N"]) {///< 判断不是布尔型
                 const char* char_f =property_getName(property);
                 NSString *propertyName = [NSString stringWithUTF8String:char_f];
-                NSString *dicKey=[propertyName substringFromIndex:Pro_Prefix.length];
+                NSString *dicKey=propertyName;
+                if ([propertyName hasPrefix:Pro_Prefix]) {
+                    dicKey=[propertyName substringFromIndex:Pro_Prefix.length];
+                }
                 if (!baseModel)break;
+
                 if ([[dic allKeys]containsObject:dicKey]) {
-                    [baseModel setValue:[[dic objectForKey:dicKey] isEqual:[NSNull null]]?@"":[dic objectForKey:dicKey] forKey:propertyName];
+                    id value=[[dic objectForKey:dicKey] isEqual:[NSNull null]]?@"":[dic objectForKey:dicKey];
+                    if ([propertType hasPrefix:@"T@\"NSString"]) {///< 转str
+                        [baseModel setValue:[NSString stringWithFormat:@"%@",value] forKey:propertyName];
+                    }else{
+                        [baseModel setValue:value forKey:propertyName];
+                    }
                 }
                 else{
                     if (isNewObject&&[propertType hasPrefix:@"T@"]) {///< 新对象赋值并且是nsobject类型
@@ -94,23 +103,32 @@
             [backArr addObject:baseModel];
         }
 //        修复
-        else if([dic isKindOfClass:[JUBasicModels class]]){
+        else if([dic isKindOfClass:[JuBasicModels class]]){
             [backArr addObject:dic];
         }
     }
     return backArr ;
 }
 
-
+/**
+ *  网络获取数据数组转换
+ */
++(NSArray *) setArray :(NSArray *) arr{
+    if ([arr isKindOfClass:[NSArray class]]) {
+        return arr;
+    }else{
+        return [NSArray new];
+    }
+}
 
 //对象转换成字典
 +(NSMutableDictionary *) setModelForDictionary :(id) baseModel {
-    if (![baseModel isKindOfClass:[JUBasicModels class]]) {
+    if (![baseModel isKindOfClass:[JuBasicModels class]]) {
         return [NSMutableDictionary dictionary];//防止死循环
     }
     NSMutableDictionary *dicModel = [NSMutableDictionary dictionary];
     Class class = [baseModel class];
-    while (class!=[JUBasicModels class]) {
+    while (class!=[JuBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList(class, &outCount);
         for (i = 0; i<outCount; i++)
@@ -149,7 +167,7 @@
 +(NSString *) setModelForString :(id ) baseModel{
     NSMutableString *strModel = [NSMutableString string];
     Class class = [baseModel class];
-    while (class!=[JUBasicModels class]) {
+    while (class!=[JuBasicModels class]) {
         unsigned int outCount, i;
         objc_property_t *properties =class_copyPropertyList([class class], &outCount);
         for (i = 0; i<outCount; i++)

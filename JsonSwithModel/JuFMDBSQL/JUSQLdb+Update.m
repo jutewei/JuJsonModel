@@ -9,7 +9,7 @@
 #import "JUSQLdb+Update.h"
 
 @implementation JUSQLdb (Update)
-+(BOOL)shUpdateTable:(JUBasicModels *)object setKeys:(id)setKeys{
++(BOOL)shUpdateTable:(JuBasicModels *)object setKeys:(id)setKeys{
     NSString *className=NSStringFromClass([object class]);
     NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
     return [self shUpdateTable:className withData:dicKeyVaule setKeys:setKeys];

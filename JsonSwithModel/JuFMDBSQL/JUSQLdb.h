@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
 #import "JUPublicSQL.h"
-#import "JUBasicModels.h"
+#import "JuBasicModels.h"
 @interface JUSQLdb : FMDatabaseQueue
 
 //+(FMDatabase *)shCreatDB;

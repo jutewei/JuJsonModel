@@ -27,7 +27,7 @@
     return [self shDeleteTable:tableName withSql:[arrWhere componentsJoinedByString:@" AND "]];
 }
 //删除表数据
-+(BOOL)shDeteleTabData:(JUBasicModels *)object{
++(BOOL)shDeteleTabData:(JuBasicModels *)object{
     NSDictionary *dicKeyVaule=[[object class] setModelForDictionary:object];
     return [self shDeteleTabData:dicKeyVaule table:NSStringFromClass([object class])];
 }

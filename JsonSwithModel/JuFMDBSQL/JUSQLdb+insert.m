@@ -13,7 +13,7 @@
 /**批量插入数据使用事物*/
 
 //插入表数据(单条)
-+(BOOL)shInsertTable:(JUBasicModels *)object primary:(NSString *)priKey{
++(BOOL)shInsertTable:(JuBasicModels *)object primary:(NSString *)priKey{
     NSString *tableName=NSStringFromClass([object class]);
     return [self shInsertTable:tableName withData:object primary:priKey];
 }
@@ -89,7 +89,7 @@
         return object;
     }else if([object isKindOfClass:[NSArray class]]&&[object count]>0){
         return [self shObjectForDic:object[0]];
-    }else if([object isKindOfClass:[JUBasicModels class]]){
+    }else if([object isKindOfClass:[JuBasicModels class]]){
         return [[object class] setModelForDictionary:object];
     }
     return @{};

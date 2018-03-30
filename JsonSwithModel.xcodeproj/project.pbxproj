@@ -19,8 +19,8 @@
 		DC6B54A61D43A44A00FC5ADC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B547F1D43A43200FC5ADC /* FMDatabasePool.m */; };
 		DC6B54A71D43A44D00FC5ADC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54811D43A43200FC5ADC /* FMDatabaseQueue.m */; };
 		DC6B54A81D43A45000FC5ADC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54841D43A43200FC5ADC /* FMResultSet.m */; };
-		DC6B54AE1D43A67800FC5ADC /* JUBasicEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54AB1D43A67800FC5ADC /* JUBasicEncode.m */; };
-		DC6B54AF1D43A67800FC5ADC /* JUBasicModels.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54AD1D43A67800FC5ADC /* JUBasicModels.m */; };
+		DC6B54AE1D43A67800FC5ADC /* JuBasicEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54AB1D43A67800FC5ADC /* JuBasicEncode.m */; };
+		DC6B54AF1D43A67800FC5ADC /* JuBasicModels.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6B54AD1D43A67800FC5ADC /* JuBasicModels.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,10 +62,10 @@
 		DC6B54971D43A43F00FC5ADC /* JUSQLQueuedb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUSQLQueuedb.m; sourceTree = "<group>"; };
 		DC6B54991D43A43F00FC5ADC /* JUPublicSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUPublicSQL.h; sourceTree = "<group>"; };
 		DC6B549A1D43A43F00FC5ADC /* JUPublicSQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUPublicSQL.m; sourceTree = "<group>"; };
-		DC6B54AA1D43A67800FC5ADC /* JUBasicEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicEncode.h; sourceTree = "<group>"; };
-		DC6B54AB1D43A67800FC5ADC /* JUBasicEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicEncode.m; sourceTree = "<group>"; };
-		DC6B54AC1D43A67800FC5ADC /* JUBasicModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBasicModels.h; sourceTree = "<group>"; };
-		DC6B54AD1D43A67800FC5ADC /* JUBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBasicModels.m; sourceTree = "<group>"; };
+		DC6B54AA1D43A67800FC5ADC /* JuBasicEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuBasicEncode.h; sourceTree = "<group>"; };
+		DC6B54AB1D43A67800FC5ADC /* JuBasicEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuBasicEncode.m; sourceTree = "<group>"; };
+		DC6B54AC1D43A67800FC5ADC /* JuBasicModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuBasicModels.h; sourceTree = "<group>"; };
+		DC6B54AD1D43A67800FC5ADC /* JuBasicModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuBasicModels.m; sourceTree = "<group>"; };
 		EBFEB22D1D3C93450033AFDE /* libJsonSwithModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJsonSwithModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,10 +131,10 @@
 		DC6B54A91D43A67800FC5ADC /* JUModel */ = {
 			isa = PBXGroup;
 			children = (
-				DC6B54AA1D43A67800FC5ADC /* JUBasicEncode.h */,
-				DC6B54AB1D43A67800FC5ADC /* JUBasicEncode.m */,
-				DC6B54AC1D43A67800FC5ADC /* JUBasicModels.h */,
-				DC6B54AD1D43A67800FC5ADC /* JUBasicModels.m */,
+				DC6B54AA1D43A67800FC5ADC /* JuBasicEncode.h */,
+				DC6B54AB1D43A67800FC5ADC /* JuBasicEncode.m */,
+				DC6B54AC1D43A67800FC5ADC /* JuBasicModels.h */,
+				DC6B54AD1D43A67800FC5ADC /* JuBasicModels.m */,
 			);
 			path = JUModel;
 			sourceTree = "<group>";
@@ -230,10 +230,10 @@
 				DC6B54A21D43A43F00FC5ADC /* JUSQLQueuedb.m in Sources */,
 				DC6B549F1D43A43F00FC5ADC /* JUSQLdb+Select.m in Sources */,
 				DC6B54A11D43A43F00FC5ADC /* JUSQLdb.m in Sources */,
-				DC6B54AF1D43A67800FC5ADC /* JUBasicModels.m in Sources */,
+				DC6B54AF1D43A67800FC5ADC /* JuBasicModels.m in Sources */,
 				DC6B54A31D43A43F00FC5ADC /* JUPublicSQL.m in Sources */,
 				DC6B54A51D43A44700FC5ADC /* FMDatabase.m in Sources */,
-				DC6B54AE1D43A67800FC5ADC /* JUBasicEncode.m in Sources */,
+				DC6B54AE1D43A67800FC5ADC /* JuBasicEncode.m in Sources */,
 				DC6B54A41D43A44400FC5ADC /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

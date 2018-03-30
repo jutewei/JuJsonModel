@@ -18,7 +18,7 @@
  *
  *  @return 操作状态
  */
-+(BOOL)shDeteleTabData:(JUBasicModels *)object;
++(BOOL)shDeteleTabData:(JuBasicModels *)object;
 /**
  *  @author Juvid, 16-07-22 13:07:19
  *

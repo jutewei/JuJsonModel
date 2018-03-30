@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JUBasicEncode : NSObject<NSCopying,NSCoding>
+@interface JuBasicEncode : NSObject<NSCopying,NSCoding>
 -(void)destroyDealloc;//重置单例
 -(void)mutableCopy:(id)baseClass;
 @end

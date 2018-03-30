@@ -22,7 +22,7 @@
  *
  *  @return 操作状态
  */
-+(BOOL)shInsertTable:(JUBasicModels *)object primary:(NSString *)priKey;
++(BOOL)shInsertTable:(JuBasicModels *)object primary:(NSString *)priKey;
 /**
  *  @author Juvid, 16-07-22 13:07:57
  *
