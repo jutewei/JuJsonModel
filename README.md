@@ -25,13 +25,14 @@ OC网络json数据转模型，zip包中工具可实现转换并生成相应的�
  *
  *  @return 返回转换好的对象
  */
+ 
 +(id) setDictionaryForModel :(NSDictionary *) dic ;
 
 -(id) setDictionaryForModel :(NSDictionary *) dic;
 
 
 2、模型转数组或字典
-//对象转换成字典
+
 /**
  *  @author Juvid, 15-07-15 10:07:17
  *
@@ -41,8 +42,9 @@ OC网络json数据转模型，zip包中工具可实现转换并生成相应的�
  *
  *  @return 返回字典
  */
+ 
 +(NSMutableDictionary *) setModelForDictionary :(id) baseModel;
-//对象数组转换成数字
+
 /**
  *  @author Juvid, 15-07-15 10:07:17
  *
